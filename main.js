@@ -1,2 +1,3 @@
-console.log(23);
-// console.log(25);
+const str = 'arctic';
+console.log("Длина строки: ", str.length);
+console.log("Строка в заглавном регистре: " + 'arctic'.toUpperCase());
