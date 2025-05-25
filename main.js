@@ -1,4 +1,3 @@
-const name = 'Ruslan';
-const message = `Добро пожаловать, ${name}, благодарим за регистрацию!
-Надеемся, Вам понравится`;
-console.log(message);
+const a = Math.round((Math.random() + 1) * 5);
+const s = a * a;
+console.log(`Площадь квадрата со стороной a=${a} равна ${s}`);
