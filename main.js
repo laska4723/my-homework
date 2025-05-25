@@ -1,2 +1,4 @@
-const text = 'this_is_an_example_string';
-console.log(text.split('_'));
+const name = 'Ruslan';
+const message = `Добро пожаловать, ${name}, благодарим за регистрацию!
+Надеемся, Вам понравится`;
+console.log(message);
