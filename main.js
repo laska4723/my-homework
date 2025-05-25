@@ -1,3 +1,4 @@
-const str = 'молоко';
-console.log("Индекс первой буквы о: ", str.indexOf('о'));
-console.log("Индекс последней буквы о: ", str.indexOf('о', str.length - 1));
+const str1 = 'привет';
+const str2 = 'ветеринар';
+console.log(str1.startsWith('вет'));
+console.log(str2.startsWith('вет'));
