@@ -1,18 +1,24 @@
-const value = 'admin';
+const value = 'patrick';
 
 switch (value) {
-    case 'user':
-    case 'client':
-        result = "1 Уровень";
+    case 'spongebob':
+        result = "| ( · )( · ) |";
         break;
 
-    case 'admin':
-    case 'manager':
-        result = "2 Уровень";
+    case 'patrick':
+        result = "/ ( · )( · ) \\";
         break;
 
-    case 'superadmin':
-        result = "3 Уровень";
+    case 'squidward':
+        result = "( ( · )( · ) )";
+        break;
+
+    case 'plankton':
+        result = "| ( · ) |";
+        break;
+
+    case 'mr. Crabs':
+        result = "|·||·|";
         break;
 }
 
