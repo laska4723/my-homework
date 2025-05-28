@@ -1,5 +1,22 @@
-const classes = Math.round((Math.random() + 1) * 10);
-const students = Math.round((Math.random() + 1) * 10);
-console.log(`Классов: ${classes}
-Учеников: ${students}
-Нужно купить парт: ${classes * (Math.floor(students / 2) + students % 2)}`);
+// Рандомное целое число в промежутке от -100 до 100
+const num1 = Math.round(Math.random() * -100) + Math.round(Math.random() * 100);
+console.log(num1);
+
+// Рандомное целое число в промежутке от 200 до 1200, кратное 100 (например 200, 300, 900, 1200 или другое)
+const num2 = 1200 - 100 * Math.floor(Math.random() * 10);
+console.log(num2);
+
+// Рандомное вещественное число с точностью 2 знака после запятой в промежутке от 98 до 102
+const num3 = Math.floor(Math.random() * ((102 * 100) - (98 * 100) + 1) + (98 * 100)) / 100;
+console.log(num3);
+
+/*
+Рандомное вещественное число с точностью 6 знаков после запятой,
+в промежутке от -300 до +300,
+при этом целая часть числа должна быть кратна 10
+(например: -290.536748, -20.759206, 110.463069 и подобные)
+*/
+const num4 =
+    (Math.floor(Math.random() * ((300 / 10 - (-300) / 10 + 1)) + (-300) / 10) * 10) +
+    Math.floor(Math.random() * 1000000) / 1000000;
+console.log(num4);
