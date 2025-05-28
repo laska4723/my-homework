@@ -1,9 +1,9 @@
-const num = Math.round(Math.random() * -2) + Math.round(Math.random() * 2);
+const num = Math.ceil(Math.random() * 20);
 console.log("Число:", num);
-if (num > 0) {
-    console.log("положительное");
-} else if (num < 0) {
-    console.log("отрицательное");
-} else {
-    console.log("null");
+if (num % 3 === 0 && num % 5 === 0) {
+    console.log("FizzBuzz");
+} else if (num % 3 === 0) {
+    console.log("Fizz");
+} else if (num % 5 === 0) {
+    console.log("Buzz");
 }
