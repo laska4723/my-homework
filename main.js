@@ -1,24 +1,24 @@
-const value = 'patrick';
+const value = 'moderation';
 
 switch (value) {
-    case 'spongebob':
-        result = "| ( · )( · ) |";
+    case 'approved':
+        result = "approved";
         break;
 
-    case 'patrick':
-        result = "/ ( · )( · ) \\";
+    case 'pending':
+    case 'moderation':
+    case 'waiting':
+        result = "pending";
         break;
 
-    case 'squidward':
-        result = "( ( · )( · ) )";
+    case 'declined':
+    case 'rejected':
+    case 'notaccepted':
+        result = "declined";
         break;
 
-    case 'plankton':
-        result = "| ( · ) |";
-        break;
-
-    case 'mr. Crabs':
-        result = "|·||·|";
+    default:
+        result = "pending";
         break;
 }
 
