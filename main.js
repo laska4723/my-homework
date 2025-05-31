@@ -1,3 +1,4 @@
-const a = 1 + Math.floor(Math.random() * 10);
-const s = a * a;
-console.log(`Площадь квадрата со стороной a=${a} равна ${s}`);
+const r = 1 + Math.floor(Math.random() * 20);
+const s = Math.PI * r**2;
+console.log(`Радиус: ${r}
+Площадь: ${s.toFixed(2)}`);
