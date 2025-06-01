@@ -1,3 +1,10 @@
-const array = [1, 33, -10, 'example', 'word'];
-const result = array.join('_');
-console.log(result);
+const user = {
+    name: 'Alex',
+    nickname: 'Alexxx675',
+    nicknameHistory: ['AlexLuk', 'Xela-123', 'Sasha 8'],
+};
+
+user.nicknameHistory.push(user.nickname);
+user.nickname = 'bmw-e39';
+
+console.log(user);
