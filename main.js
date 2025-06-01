@@ -1,18 +1,20 @@
-const vowels = ["а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е"];
-const word = 'Флюгегехаймен';
-
-const wordLower = word.toLowerCase();
-
-let vowelCount= 0;
-for (const letter of wordLower) {
-    for (const vowel of vowels) {
-        if (letter === vowel) {
-            vowelCount++;
-        }
-    }
+const person = {
+    name: 'Sergei',
+    surname: 'Petrov',
+    phone: '+998 901752397',
+    email: 'otvertka1337@mail.ru',
+    telegram: 'https://t.me/seregakot647',
+    city: 'Moscow'
 }
 
-const consonantCount = word.length - vowelCount;
+let array1 = [];
+let array2 = [];
 
-console.log(`Количество гласных букв: ${vowelCount}
-Количество согласных букв: ${consonantCount}`);
+for (let key in person) {
+    array1.push(key);
+    array2.push(person[key]);
+}
+
+console.log("Ключи объекта:", array1);
+console.log(" ");
+console.log("Значения объекта:", array2);
