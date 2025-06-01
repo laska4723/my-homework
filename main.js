@@ -1,9 +1,3 @@
-const num = 1 + Math.floor(Math.random() * 20);
-console.log("Число:", num);
-if (num % 3 === 0 && num % 5 === 0) {
-    console.log("FizzBuzz");
-} else if (num % 3 === 0) {
-    console.log("Fizz");
-} else if (num % 5 === 0) {
-    console.log("Buzz");
-}
+const num = 1980 + 10 * Math.floor(Math.random() * 15);
+console.log(num);
+console.log(`год ${(num % 400 === 0) || (num % 4 === 0 && num % 100 !== 0) ? "" : "не "}високосный`);
