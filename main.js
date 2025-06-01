@@ -1,12 +1,18 @@
-let num1 = 1 + Math.floor(Math.random() * 6);
-let num2 = 1 + Math.floor(Math.random() * 6);
+const vowels = ["а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е"];
+const word = 'Флюгегехаймен';
 
-let count = 1;
-while (num1 !== num2) {
-    num1 = 1 + Math.floor(Math.random() * 6);
-    num2 = 1 + Math.floor(Math.random() * 6);
-    count++;
+const wordLower = word.toLowerCase();
+
+let vowelCount= 0;
+for (const letter of wordLower) {
+    for (const vowel of vowels) {
+        if (letter === vowel) {
+            vowelCount++;
+        }
+    }
 }
 
-console.log(`Выпал дубль: ${num1} ${num2}
-Количество попыток: ${count}`);
+const consonantCount = word.length - vowelCount;
+
+console.log(`Количество гласных букв: ${vowelCount}
+Количество согласных букв: ${consonantCount}`);
