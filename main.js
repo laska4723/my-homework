@@ -1,16 +1,20 @@
-const array = [-5, 6, 7, -10, 8, 0, -3, 2];
+const array = [-8, 6, 7, -10, 8, 0, -3, 9];
 
-let positiveCount = 0;
-let negativeCount = 0;
-for (let i = 0; i < array.length; i++) {
-    if (i === array.length - 2) {
-        continue;
+let min = array[0];
+let max = array[0];
+let sum = array[0];
+for (let i = 1; i < array.length; i++) {
+    if (array[i] < min) {
+        min = array[i];
     }
-    if (array[i] > 0) {
-        positiveCount++;
-    } else if (array[i] < 0) {
-        negativeCount++;
+    if (array[i] > max) {
+        max = array[i];
     }
+    sum += array[i];
 }
-console.log(`Количество положительных чисел: ${positiveCount}
-Количество отрицательных чисел: ${negativeCount}`);
+
+const avg = sum / array.length;
+
+console.log(`Минимальное число: ${min}
+Максимальное число: ${max}
+Среднее между всеми значениями: ${avg}`);
