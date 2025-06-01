@@ -1,11 +1,9 @@
-// Рандомное целое число в промежутке от -100 до 100
-const num1 = -100 + Math.floor(Math.random() * 201);
-console.log(num1);
-
-// Рандомное целое число в промежутке от 200 до 1200, кратное 100 (например 200, 300, 900, 1200 или другое)
-const num2 = 200 + 100 * Math.floor(Math.random() * 11);
-console.log(num2);
-
-// Рандомное вещественное число с точностью 2 знака после запятой в промежутке от 98 до 102
-const num3 = Math.round((98 + Math.random() * 4) * 100) / 100;
-console.log(num3);
+const num = -2 + Math.floor(Math.random() * 5);
+console.log("Число:", num);
+if (num > 0) {
+    console.log("положительное");
+} else if (num < 0) {
+    console.log("отрицательное");
+} else {
+    console.log("null");
+}
