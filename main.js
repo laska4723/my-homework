@@ -1,17 +1,7 @@
-const numbers1 = [1.1 , 2.2, -2, 3.3, -1, 5.5, 5.99, 7.49, 7.9999, -2.2, -3];
+const h = 8;
 
-let positiveIndices = [];
-for (let i = 0; i < numbers1.length; i++) {
-  if (numbers1[i] > 0) positiveIndices.push(i);
+for (let i = 1; i <= h; i++) {
+  let space = ' '.repeat(h - i);
+  let star = '*'.repeat(i * 2 - 1);
+  console.log(space + star);
 }
-
-const excludeIndices = positiveIndices.slice(-3);
-
-let result = [];
-for (let i = 0; i < numbers1.length; i++) {
-  if (numbers1[i] > 0 && !excludeIndices.includes(i)) {
-    result.push(Math.round(numbers1[i]));
-  } else result.push(numbers1[i]);
-}
-
-console.log(result);
