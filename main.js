@@ -1,40 +1,70 @@
 /*
-Дан массив из 10 объектов с пользователями.
-У каждого пользователя есть имя и возраст.
+Вам даны 4 человека и яблоки.
+Яблоки должны быть разделены поровну между всеми людьми.
+Яблоки делятся только нацело, то есть разделить одно яблоко между несколькими людьми нельзя!
 
-Подсчитайте и выведите количество различных возрастов.
+У каждого человека есть:
+* Имя
+* Желаемое количество яблок, при котором человека наестся и будет счастливым
 
-Вы должны повторить такой вывод:
-Возраст=25. Количество людей=3
-Возраст=28. Количество людей=2
-Возраст=30. Количество людей=3
-Возраст=35. Количество людей=1
-Возраст=41. Количество людей=1
+Добавьте в каждого человека поля:
+* eaten - количество яблок, которое досталось человеку
+* isHappy - счастлив ли человек, съел ли он требуемое количество яблок (если съел даже больше - тоже счастлив)
+
+Распределите людей по двум массивам - счастливые отдельно, несчастливые отдельно.
+
+Для решения задачи используйте один цикл for of
  */
+const mary = {
+  name: 'Mary',
+  wantApples: 2,
+};
 
-const users = [
-  { name: 'Alice', age: 25 },
-  { name: 'Bob', age: 30 },
-  { name: 'Charlie', age: 25 },
-  { name: 'Diana', age: 35 },
-  { name: 'Eve', age: 30 },
-  { name: 'Frank', age: 28 },
-  { name: 'Grace', age: 25 },
-  { name: 'Hannah', age: 41 },
-  { name: 'Ivy', age: 30 },
-  { name: 'Jack', age: 28 },
-];
+const alex = {
+  name: 'Alex',
+  wantApples: 1,
+};
 
-const count = {}; // Подсказка
+const mike = {
+  name: 'Mike',
+  wantApples: 5,
+};
+
+const brown = {
+  name: 'Brown',
+  wantApples: 4,
+};
+
+const people = [mary, alex, mike, brown];
+const apples = 11;
 
 // Ваш код здесь ...
-for (const user of users) {
-  if (count[user.age] === undefined) {
-    count[user.age] = 0;
-  }
-  count[user.age]++;
+const applesForEachPerson = Math.floor(apples / people.length);
+const happy = [];
+const notHappy = [];
+
+for (let person of people) {
+  person.eaten = applesForEachPerson;
+  person.isHappy = applesForEachPerson >= person.wantApples;
+
+  if (person.isHappy) happy.push(person);
+  else notHappy.push(person);
 }
 
-for (const key in count) {
-  console.log(`Возраст=${key}. Количество людей=${count[key]}`);
-}
+console.log(happy);
+/* Довольные:
+[
+  { name: 'Mary', wantApples: 2, isHappy: true, eaten: 2 },
+  { name: 'Alex', wantApples: 1, isHappy: true, eaten: 2 }
+]
+ */
+
+console.log('')
+
+console.log(notHappy);
+/* Недовольные:
+[
+  { name: 'Mike', wantApples: 5, isHappy: false, eaten: 2 },
+  { name: 'Brown', wantApples: 4, isHappy: false, eaten: 2 }
+]
+ */
