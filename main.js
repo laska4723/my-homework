@@ -1,70 +1,51 @@
 /*
-Вам даны 4 человека и яблоки.
-Яблоки должны быть разделены поровну между всеми людьми.
-Яблоки делятся только нацело, то есть разделить одно яблоко между несколькими людьми нельзя!
+Вам даны 4 объекта.
+У каждого из них есть поле dateOfBirth, в котором записана дата его рождения.
+Добавьте в каждый объект поле age, в котором будет записано полное количество лет человека.
+Далее выведите каждый объект.
 
-У каждого человека есть:
-* Имя
-* Желаемое количество яблок, при котором человека наестся и будет счастливым
+В решении задачи Вам поможет объект Date для работы с датами, и его метод getTime:
+* https://learn.javascript.ru/date
+* https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-Добавьте в каждого человека поля:
-* eaten - количество яблок, которое досталось человеку
-* isHappy - счастлив ли человек, съел ли он требуемое количество яблок (если съел даже больше - тоже счастлив)
-
-Распределите людей по двум массивам - счастливые отдельно, несчастливые отдельно.
-
-Для решения задачи используйте один цикл for of
+--- Вывод программы, запущенной 20 января 2025
+Вывод программы должен быть следующим:
+{ name: 'Alex', dateOfBirth: 2024-05-15T00:00:00.000Z, age: 0 }
+{ name: 'Jake', dateOfBirth: 1970-01-01T00:00:00.000Z, age: 55 }
+{ name: 'John', dateOfBirth: 2007-12-30T08:32:59.953Z, age: 17 }
+{ name: 'Bob', dateOfBirth: 2025-01-20T08:20:21.741Z, age: 0 }
  */
-const mary = {
-  name: 'Mary',
-  wantApples: 2,
-};
 
 const alex = {
   name: 'Alex',
-  wantApples: 1,
+  dateOfBirth: new Date('2024-05-15'),
 };
 
-const mike = {
-  name: 'Mike',
-  wantApples: 5,
+const jake = {
+  name: 'Jake',
+  dateOfBirth: new Date('1970-01-01T00:00:00.000Z'),
 };
 
-const brown = {
-  name: 'Brown',
-  wantApples: 4,
+const john = {
+  name: 'John',
+  dateOfBirth: new Date('2007-12-30T11:32:59.953+03:00'),
 };
 
-const people = [mary, alex, mike, brown];
-const apples = 11;
+const bob = {
+  name: 'Bob',
+  dateOfBirth: new Date(),
+};
 
-// Ваш код здесь ...
-const applesForEachPerson = Math.floor(apples / people.length);
-const happy = [];
-const notHappy = [];
+// ... Ваш код здесь
 
-for (let person of people) {
-  person.eaten = applesForEachPerson;
-  person.isHappy = applesForEachPerson >= person.wantApples;
+const millisecondsInYear = 365 * 24 * 60 * 60 * 1000;
+const dateNow = Date.now();
+alex.age = Math.floor((dateNow - alex.dateOfBirth.getTime()) / millisecondsInYear);
+jake.age = Math.floor((dateNow - jake.dateOfBirth.getTime()) / millisecondsInYear);
+john.age = Math.floor((dateNow - john.dateOfBirth.getTime()) / millisecondsInYear);
+bob.age = Math.floor((dateNow - bob.dateOfBirth.getTime()) / millisecondsInYear);
 
-  if (person.isHappy) happy.push(person);
-  else notHappy.push(person);
-}
-
-console.log(happy);
-/* Довольные:
-[
-  { name: 'Mary', wantApples: 2, isHappy: true, eaten: 2 },
-  { name: 'Alex', wantApples: 1, isHappy: true, eaten: 2 }
-]
- */
-
-console.log('')
-
-console.log(notHappy);
-/* Недовольные:
-[
-  { name: 'Mike', wantApples: 5, isHappy: false, eaten: 2 },
-  { name: 'Brown', wantApples: 4, isHappy: false, eaten: 2 }
-]
- */
+console.log(alex);
+console.log(jake);
+console.log(john);
+console.log(bob);
