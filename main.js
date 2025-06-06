@@ -1,5 +1,3 @@
-const str1 = 'привет';
-const str2 = 'ветеринар';
+const text = 'this_is_an_example_string';
 
-console.log(`${str1.startsWith('вет')}
-${str2.startsWith('вет')}`);
+console.log(text.split('_'));
