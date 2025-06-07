@@ -1,20 +1,53 @@
-const person = {
-  name: 'Sergei',
-  surname: 'Petrov',
-  phone: '+998 901752397',
-  email: 'otvertka1337@mail.ru',
-  telegram: 'https://t.me/seregakot647',
-  city: 'Moscow'
+/*
+С помощью цикла отфильтруйте только подходящих по таким критериям людей:
+Мужчины старше 18 или женщины старше 20
+
+Пол определяется по значению в поле gender:
+* f - female, женщина
+* m - man, мужчина
+
+Имена подходящих людей запишите в result, чтобы по итогу работы программы в переменной result было записано следующее:
+{
+  men: [ 'Александр', 'Дмитрий' ],
+  women: [ 'Мария', 'Екатерина', 'Наталья' ]
+}
+ */
+
+const people = [
+  { id: 8, name: 'Александр', gender: 'm', age: 25 },
+  { id: 12, name: 'Мария', gender: 'f', age: 22 },
+  { id: 31, name: 'Иван', gender: 'm', age: 17 },
+  { id: 34, name: 'Ольга', gender: 'f', age: 19 },
+  { id: 53, name: 'Дмитрий', gender: 'm', age: 30 },
+  { id: 95, name: 'Екатерина', gender: 'f', age: 21 },
+  { id: 3, name: 'Сергей', gender: 'm', age: 18 },
+  { id: 20, name: 'Анна', gender: 'f', age: 20 },
+  { id: 19, name: 'Андрей', gender: 'm', age: 15 },
+  { id: 30, name: 'Наталья', gender: 'f', age: 25 },
+];
+
+const result = {
+  men: [],
+  women: [],
+};
+
+for (let i = 0; i < people.length; i++) {
+  const person = people[i];
+  const name = person.name;
+  const gender = person.gender;
+  const age = person.age;
+
+  if (gender === 'm' && age > 18) {
+    result.men.push(name);
+  } else if (gender === 'f' && age > 20) {
+    result.women.push(name);
+  }
 }
 
-let array1 = [];
-let array2 = [];
-
-for (let key in person) {
-  array1.push(key);
-  array2.push(person[key]);
+console.log(result);
+/* Должно вывестись:
+{
+  men: [ 'Александр', 'Дмитрий' ],
+  women: [ 'Мария', 'Екатерина', 'Наталья' ]
 }
-
-console.log("Ключи объекта:", array1);
-console.log('');
-console.log("Значения объекта:", array2);
+ */
