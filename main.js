@@ -1,21 +1,14 @@
-const array = [-8, 6, 7, -10, 8, 0, -3, 9];
+const vowels = ["а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е"];
+const word = 'Флюгегехаймен';
 
-let min = array[0];
-let max = array[0];
-let sum = array[0];
-for (let i = 1; i < array.length; i++) {
-  const element = array[i];
-  if (element < min) {
-    min = element;
-  }
-  if (element > max) {
-    max = element;
-  }
-  sum += element;
+const wordLower = word.toLowerCase();
+
+let vowelCount= 0;
+for (const letter of wordLower) {
+  if (vowels.includes(letter)) vowelCount++;
 }
 
-const avg = sum / array.length;
+const consonantCount = word.length - vowelCount;
 
-console.log(`Минимальное число: ${min}
-Максимальное число: ${max}
-Среднее между всеми значениями: ${avg}`);
+console.log(`Количество гласных букв: ${vowelCount}
+Количество согласных букв: ${consonantCount}`);
