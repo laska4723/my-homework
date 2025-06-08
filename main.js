@@ -1,16 +1,13 @@
-const numbers = [1.1, -2.2, -2, 3.3, -1, 5.5, 5.99, 7.49, 7.9999, -2.2, -3];
+const matrix = [
+  ['Id', 'Title', 'Description'],
+  [1, 'Title-1', 'Description-1'],
+  [2, 'Title-2', 'Description-2'],
+  [3, 'Title-3', 'Description-3', 'Поле с багом'],
+  [4, 'Title-4', 'Description-4'],
+  [5, 'Title-5', 'Description-5'],
+  [6, 'Title-6', 'Description-6', 'Поле с багом'],
+];
 
-let positiveCount = 0;
-for (let i = numbers.length - 1; i >= 0; i--) {
-  const element = numbers[i];
-
-  if (element > 0) {
-    if (positiveCount < 3) {
-      positiveCount++;
-      continue;
-    }
-  numbers[i] = Math.round(element);
-  }
+for (const row of matrix) {
+  console.log(row.join('\t'));
 }
-
-console.log(numbers);
