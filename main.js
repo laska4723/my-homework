@@ -1,13 +1,41 @@
-const matrix = [
-  ['Id', 'Title', 'Description'],
-  [1, 'Title-1', 'Description-1'],
-  [2, 'Title-2', 'Description-2'],
-  [3, 'Title-3', 'Description-3', 'Поле с багом'],
-  [4, 'Title-4', 'Description-4'],
-  [5, 'Title-5', 'Description-5'],
-  [6, 'Title-6', 'Description-6', 'Поле с багом'],
+/*
+Дан массив из 10 объектов с пользователями.
+У каждого пользователя есть имя и возраст.
+
+Подсчитайте и выведите количество различных возрастов.
+
+Вы должны повторить такой вывод:
+Возраст=25. Количество людей=3
+Возраст=28. Количество людей=2
+Возраст=30. Количество людей=3
+Возраст=35. Количество людей=1
+Возраст=41. Количество людей=1
+ */
+
+const users = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 30 },
+  { name: 'Charlie', age: 25 },
+  { name: 'Diana', age: 35 },
+  { name: 'Eve', age: 30 },
+  { name: 'Frank', age: 28 },
+  { name: 'Grace', age: 25 },
+  { name: 'Hannah', age: 41 },
+  { name: 'Ivy', age: 30 },
+  { name: 'Jack', age: 28 },
 ];
 
-for (const row of matrix) {
-  console.log(row.join('\t'));
+const count = {}; // Подсказка
+
+// Ваш код здесь ...
+for (const user of users) {
+  const age = user.age;
+  if (count[age] === undefined) {
+    count[age] = 0;
+  }
+  count[age]++;
+}
+
+for (const key in count) {
+  console.log(`Возраст=${key}. Количество людей=${count[key]}`);
 }
