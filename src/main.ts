@@ -1,57 +1,28 @@
-type A = {
-  first: string;
-  second: {
-    third: string;
-    fourth?: string;
-    fifth: {
-      sixth?: {
-        tenth: {
-          twelfth?: {
-            thirteenth: {
-              fifteenth: {
-                sixteenth?: {
-                  last: string;
-                };
-              };
-            };
-            fourteenth: string;
-          };
-        };
-        eleventh: string;
-      };
-      seventh: number;
-      eight: string;
-    };
-  };
-};
+import { red, green, blue } from 'chalk';
 
-const a: A = {
-  first: 'z',
-  second: {
-    third: 'f',
-    fourth: 'a',
-    fifth: {
-      sixth: {
-        tenth: {
-          twelfth: {
-            thirteenth: {
-              fifteenth: {
-                sixteenth: {
-                  last: 'Достучались',
-                },
-              },
-            },
-            fourteenth: 's',
-          },
-        },
-        eleventh: 'kk',
-      },
-      seventh: 8,
-      eight: 'b',
-    },
-  },
-};
+const max = 10;
+let result = '';
 
-const result = a.second.fifth.sixth?.tenth.twelfth?.thirteenth.fifteenth.sixteenth?.last.toUpperCase();
+for (let i = 0; i < max; i++) {
+  const n = i % 3;
+
+  switch (n) {
+    case 0:
+      result += red('*');
+      break;
+
+    case 1:
+      result += green('*');
+      break;
+
+    case 2:
+      result += blue('*');
+      break;
+  }
+
+  if (i !== max - 1) {
+    result += ' - ';
+  }
+}
 
 console.log(result);
