@@ -1,30 +1,57 @@
 type A = {
-  age?: number | string;
-  info: (number | string)[] | Record<string, number | string>;
-  nick: string;
-  photo?: string | null;
+  first: string;
+  second: {
+    third: string;
+    fourth?: string;
+    fifth: {
+      sixth?: {
+        tenth: {
+          twelfth?: {
+            thirteenth: {
+              fifteenth: {
+                sixteenth?: {
+                  last: string;
+                };
+              };
+            };
+            fourteenth: string;
+          };
+        };
+        eleventh: string;
+      };
+      seventh: number;
+      eight: string;
+    };
+  };
 };
 
-const a1: A = {
-  age: 10,
-  nick: 'mynick',
-  info: [1, 100],
-  photo: 'string',
+const a: A = {
+  first: 'z',
+  second: {
+    third: 'f',
+    fourth: 'a',
+    fifth: {
+      sixth: {
+        tenth: {
+          twelfth: {
+            thirteenth: {
+              fifteenth: {
+                sixteenth: {
+                  last: 'Достучались',
+                },
+              },
+            },
+            fourteenth: 's',
+          },
+        },
+        eleventh: 'kk',
+      },
+      seventh: 8,
+      eight: 'b',
+    },
+  },
 };
 
-const a2: A = {
-  age: '10 years',
-  nick: '',
-  info: { id: 100 },
-  photo: null,
-};
+const result = a.second.fifth.sixth?.tenth.twelfth?.thirteenth.fifteenth.sixteenth?.last.toUpperCase();
 
-const a3: A = {
-  nick: '       ',
-  info: ['secret', 'key'],
-};
-
-const a4: A = {
-  nick: '',
-  info: {},
-};
+console.log(result);
