@@ -1,31 +1,39 @@
-import { faker } from '@faker-js/faker';
+import { green, red } from 'chalk';
 
-type User = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  birthdate: string;
-  gender: string;
-  country: string;
-  city: string;
-  streetAddress: string;
-  secondaryAddress: string;
-  zipCode: string;
-  phone: string;
-};
+const tests = [
+  ['топот', true],
+  ['пот', false],
+  ['потоп', true],
+  ['кабак', true],
+  ['(())', false],
+  ['табат', true],
+  ['abab', false],
+  ['топпот', true],
+  ['()()', false],
+  ['', true],
+  ['123321', true],
+  ['())(', true],
+  ['abba', true],
+  ['а роза упала на лапу азора', false], // Пробелы не совпадают!
+] as const;
 
-const user: User = {
-  firstName: faker.person.firstName(),
-  lastName: faker.person.lastName(),
-  email: faker.internet.email(),
-  birthdate: faker.date.birthdate().toLocaleDateString('ru-RU'),
-  gender: faker.person.sex(),
-  country: faker.location.country(),
-  city: faker.location.city(),
-  streetAddress: faker.location.streetAddress(),
-  secondaryAddress: faker.location.secondaryAddress(),
-  zipCode: faker.location.zipCode('#####'),
-  phone: faker.phone.number({ style: 'international' }),
-};
+for (const test of tests) {
+  const [word, expected] = test;
 
-console.log(user);
+const isPalindrome = (word: string) => {
+  for (let i = 0; i < word.length / 2; i++) {
+    if (word[i] !== word[word.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+  const result = isPalindrome(word);
+  if (result !== expected) {
+    console.log(red(`Для слова "${word}" тест не прошел. Ожидалось: ${expected} | Получено: ${result}`));
+    continue;
+  }
+
+  console.log(green(`Слово "${word}" успешно. Результат: ${result}`));
+}
