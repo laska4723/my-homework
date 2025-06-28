@@ -1,12 +1,43 @@
-import { blue, green, red } from 'chalk';
+import { fakerRU as faker } from '@faker-js/faker';
 
-const max = 10;
-const result = [];
-const colors = [red, green, blue];
-
-for (let i = 0; i < max; i++) {
-  const color = colors[i % 3];
-  result.push(color('*'));
+enum Color {
+  Red = 'Red',
+  Green = 'Green',
+  Blue = 'Blue',
 }
 
-console.log(result.join(' - '));
+const colorList: Color[] = [
+  Color.Red,
+  Color.Green,
+  Color.Blue,
+];
+
+type User = {
+  name: string;
+  id: string;
+  email: string;
+  favoriteColor: Color;
+};
+
+const users: User[] = [];
+for (let i = 0; i < 3; i++) {
+  const user: User = {
+    name: faker.person.firstName(),
+    id: faker.string.uuid(),
+    email: faker.internet.email(),
+    favoriteColor: colorList[Math.floor(Math.random() * colorList.length)],
+  };
+  users.push(user)
+}
+
+const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
+
+for (const user of users) {
+  if (user.favoriteColor === randomColor) {
+    console.log(`name: ${user.name}
+ID: ${user.id}
+email: ${user.email}
+Любимый цвет: ${user.favoriteColor}`);
+    console.log();
+  }
+}
