@@ -1,43 +1,28 @@
-import { fakerRU as faker } from '@faker-js/faker';
-
-enum Color {
-  Red = 'Red',
-  Green = 'Green',
-  Blue = 'Blue',
-}
-
-const colorList: Color[] = [
-  Color.Red,
-  Color.Green,
-  Color.Blue,
+const storage = [
+  { age: 10, name: 'Alex' },
+  { age: 20, name: 'Max' },
+  { age: 30, name: 'Jake' },
+  { age: 40, name: 'Lilo' },
 ];
 
-type User = {
-  name: string;
-  id: string;
-  email: string;
-  favoriteColor: Color;
+const smartSearch = (arr: any[], property: any, value: any) => {
+  // ... Ваш код здесь
+  for (const person of arr) {
+    if (person[property] === value) {
+      return person;
+    }
+  }
 };
 
-const users: User[] = [];
-for (let i = 0; i < 3; i++) {
-  const user: User = {
-    name: faker.person.firstName(),
-    id: faker.string.uuid(),
-    email: faker.internet.email(),
-    favoriteColor: colorList[Math.floor(Math.random() * colorList.length)],
-  };
-  users.push(user)
-}
+const person1 = smartSearch(storage, 'age', 30);
+// { age: 30, name: 'Jake' }
 
-const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
+const person2 = smartSearch(storage, 'age', 10);
+// { age: 10, name: 'Alex' }
 
-for (const user of users) {
-  if (user.favoriteColor === randomColor) {
-    console.log(`name: ${user.name}
-ID: ${user.id}
-email: ${user.email}
-Любимый цвет: ${user.favoriteColor}`);
-    console.log();
-  }
-}
+const person3 = smartSearch(storage, 'name', 'Lilo');
+// { age: 40, name: 'Lilo' }
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
