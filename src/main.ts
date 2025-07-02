@@ -1,16 +1,13 @@
-import { faker } from '@faker-js/faker';
+import { fakerRU as faker } from '@faker-js/faker';
 
-const storage = [];
+const arr: string[] = [];
 
 for (let i = 0; i < 10; i++) {
-  storage.push({
-    age: 1 + Math.floor(Math.random() * 100),
-    name: faker.person.firstName(),
-  });
+  arr.push(faker.person.firstName());
 }
 
-const person = storage.find(item => {
-  return item.age > 10;
-});
+const randomNames: string[] = arr.filter(() => Math.random() > 0.5);
 
-console.log(person);
+console.log(arr);
+console.log();
+console.log('Случайные имена:', randomNames);
