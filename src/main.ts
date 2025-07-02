@@ -1,13 +1,26 @@
-import { fakerRU as faker } from '@faker-js/faker';
+type User = {
+  name: string;
+  age: number;
+};
 
-const arr: string[] = [];
+let users: User[] = [
+  { name: 'Пользователь-1', age: 1 },
+  { name: 'Пользователь-21', age: 21 },
+  { name: 'Пользователь-30', age: 30 },
+  { name: 'Пользователь-14', age: 14 },
+  { name: 'Пользователь-18', age: 18 },
+  { name: 'Пользователь--1', age: -1 },
+  { name: 'Пользователь-1', age: 1 },
+];
 
-for (let i = 0; i < 10; i++) {
-  arr.push(faker.person.firstName());
-}
+// ... Ваш код ...
+users = users.filter(user => user.age >= 18);
 
-const randomNames: string[] = arr.filter(() => Math.random() > 0.5);
-
-console.log(arr);
-console.log();
-console.log('Случайные имена:', randomNames);
+console.log(users);
+/* Ожидаемый вывод:
+[
+  { name: 'Пользователь-21', age: 21 },
+  { name: 'Пользователь-30', age: 30 },
+  { name: 'Пользователь-18', age: 18 },
+]
+ */
