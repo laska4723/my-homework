@@ -1,23 +1,21 @@
-const storage = [
-  { age: 10, name: 'first' },
-  { age: 20, name: 'second' },
-  { age: 30, name: 'third' },
-  { age: 40, name: 'fourth' },
-];
+const num = 85;
 
-const storage2 = storage.map(item => ({
-  age: item.name,
-  name: item.age,
-  reversed: true,
-}));
+const largestProperDivisor = (value: number): number | null => {
+  if (value === 0) {
+    return null;
+  }
 
-console.log(storage2);
+  if (value === 1) {
+    return 1;
+  }
 
-/* Ожидаемый вывод:
-[
-  { age: 'first', name: 10, reversed: true },
-  { age: 'second', name: 20, reversed: true },
-  { age: 'third', name: 30, reversed: true },
-  { age: 'fourth', name: 40, reversed: true }
-]
-*/
+  let div = Math.floor(value / 2);
+  while (div > 0) {
+    if (value % div === 0) return div;
+    div--;
+  }
+
+  return 1;
+};
+
+console.log(`Наибольший собственный делитель числа ${num}:`, largestProperDivisor(num));
