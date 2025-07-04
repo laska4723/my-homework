@@ -1,11 +1,18 @@
-const obj1 = { a: 12, b: 5, c: 8, d: 9, e: 14 };
+const num = 1;
 
-const sumObjectValues = (obj: { [key: string]: number }): number => {
-  let sum = 0;
-  for (const key in obj) {
-    sum += obj[key];
+const largestProperDivisor = (value: number): number | null => {
+  if (value === 0) {
+    return null;
   }
-  return sum;
+
+  const absValue = Math.abs(value);
+  for (let div = Math.floor(absValue / 2); div > 0; div--) {
+    if (absValue % div === 0) {
+      return div;
+    }
+  }
+
+  return 1;
 };
 
-console.log(sumObjectValues(obj1));
+console.log(`Наибольший собственный делитель числа ${num}:`, largestProperDivisor(num));
