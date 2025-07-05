@@ -1,33 +1,22 @@
-import { fakerRU as faker } from '@faker-js/faker';
-import { transliterate } from 'transliteration';
+import dayjs from 'dayjs';
 
-type Person = {
-  name: string;
-  age: number;
+type Callback = () => void;
+
+const checkDateContext = (isoDateStr: string, cbPast: Callback, cbFuture: Callback): string => {
+  const inputDate = dayjs(isoDateStr);
+  const today = dayjs().startOf('day');
+
+  if (inputDate.isBefore(today, 'day')) {
+    cbPast();
+    return 'past';
+  } else if (inputDate.isAfter(today, 'day')) {
+    cbFuture();
+    return 'future';
+  }
+
+  return 'present';
 };
 
-const people: Person[] = [];
-for (let i = 0; i < 10; i++) {
-  people.push({
-    name: faker.person.firstName(),
-    age: faker.number.int({ min: 18, max: 80 })
-  });
-}
+const result = checkDateContext('2025-07-06T10:00:00Z', () => {}, () => {});
 
-const findStasAge = (arr: Person[]): number | string => {
-  for (const person of arr) {
-    const nameInLatin = transliterate(person.name);
-    if (nameInLatin === 'Stas') {
-      if (person.age === null || person.age === undefined) {
-        return 'Возраста нет';
-      } else {
-        return person.age;
-      }
-    }
-  }
-  return 'Объект не найден';
-}
-
-console.log(people);
-console.log();
-console.log('Результат:', findStasAge(people));
+console.log('Результат:', result);
