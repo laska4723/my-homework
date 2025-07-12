@@ -1,24 +1,9 @@
-const array = [
-  [2, 3, 8],
-  [3, 2, 9],
-  [4, 3, 64],
-  [8, 3, 512],
-  [0, 0, 0]
-];
+const source = 'the quick brown fox jumps over the lazy dog';
+const custom = 'oak lgypb wited zts qgfch tuki oak mjrn xtv';
+const converted = 'ntg ajuk fjbydv vikjo citvikhh yd mkjidydv qjujhpiyco. ptdvijoh!';
 
-const power = (value: number, n: number) : number => {
-  return value ** n;
+let result = '';
+for (const char of converted) {
+    result += source[custom.indexOf(char)] ?? char;
 }
-
-for (const arr of array) {
-  const value = arr[0];
-  const n = arr[1];
-  const expectedResult = arr[2];
-  const actual = power(value, n);
-
-  if (actual === expectedResult) {
-    console.log(`Верно: ${value}^${n} = ${expectedResult}`);
-  } else {
-    console.log(`Ошибка: ${value}^${n} !== ${expectedResult}, ожидалось: ${actual}`);
-  }
-}
+console.log(result);
