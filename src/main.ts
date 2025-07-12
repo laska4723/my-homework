@@ -1,22 +1,24 @@
-import dayjs from 'dayjs';
+const array = [
+  [2, 3, 8],
+  [3, 2, 9],
+  [4, 3, 64],
+  [8, 3, 512],
+  [0, 0, 0]
+];
 
-type Callback = () => void;
+const power = (value: number, n: number) : number => {
+  return value ** n;
+}
 
-const checkDateContext = (isoDateStr: string, cbPast: Callback, cbFuture: Callback): string => {
-  const inputDate = dayjs(isoDateStr);
-  const today = dayjs().startOf('day');
+for (const arr of array) {
+  const value = arr[0];
+  const n = arr[1];
+  const expectedResult = arr[2];
+  const actual = power(value, n);
 
-  if (inputDate.isBefore(today, 'day')) {
-    cbPast();
-    return 'past';
-  } else if (inputDate.isAfter(today, 'day')) {
-    cbFuture();
-    return 'future';
+  if (actual === expectedResult) {
+    console.log(`Верно: ${value}^${n} = ${expectedResult}`);
+  } else {
+    console.log(`Ошибка: ${value}^${n} !== ${expectedResult}, ожидалось: ${actual}`);
   }
-
-  return 'present';
-};
-
-const result = checkDateContext('2025-07-06T10:00:00Z', () => {}, () => {});
-
-console.log('Результат:', result);
+}
