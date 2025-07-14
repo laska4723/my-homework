@@ -1,27 +1,24 @@
-const isPowerOf2 = (value: number): boolean => {
-    let n = 0;
-    while (2 ** n < value) {
-        n++;
-    }
-    return 2 ** n === value;
-}
+const storage = [
+    { age: 10, name: 'Alex' },
+    { age: 20, name: 'Max' },
+    { age: 30, name: 'Jake' },
+    { age: 40, name: 'Lilo' },
+];
 
-console.log(isPowerOf2(0) === false);
-console.log(isPowerOf2(1) === true);
-console.log(isPowerOf2(2) === true);
-console.log(isPowerOf2(3) === false);
-console.log(isPowerOf2(4) === true);
-console.log(isPowerOf2(7) === false);
-console.log(isPowerOf2(8) === true);
-console.log(isPowerOf2(120) === false);
-console.log(isPowerOf2(127) === false);
-console.log(isPowerOf2(128) === true);
-console.log(isPowerOf2(500) === false);
-console.log(isPowerOf2(512) === true);
-console.log(isPowerOf2(777) === false);
-console.log(isPowerOf2(1024) === true);
-console.log(isPowerOf2(65000) === false);
-console.log(isPowerOf2(65536) === true);
-console.log(isPowerOf2(520000) === false);
-console.log(isPowerOf2(524288) === true);
-console.log(isPowerOf2(1000000) === false);
+const smartSearch = (arr: any[], property: any, value: any) => {
+    // ... Ваш код здесь
+    return arr.find(el => el[property] === value);
+};
+
+const person1 = smartSearch(storage, 'age', 30);
+// { age: 30, name: 'Jake' }
+
+const person2 = smartSearch(storage, 'age', 10);
+// { age: 10, name: 'Alex' }
+
+const person3 = smartSearch(storage, 'name', 'Lilo');
+// { age: 40, name: 'Lilo' }
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
