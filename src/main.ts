@@ -1,10 +1,17 @@
-const deduplicate = (str: string): string => {
-    return str.split('').reduce((acc, char) => {
-        const lastChar = acc[acc.length - 1];
-        return char === lastChar ? acc : acc + char;
-    }, '');
+const countTypes = (...args: any[]) => {
+    return args.reduce((acc, item) => {
+        const type = typeof item;
+        if (acc[type]) {
+            acc[type] += 1;
+        } else {
+            acc[type] = 1;
+        }
+        return acc;
+    }, {});
 };
 
-const result = deduplicate('uuunbbeliaaaaveeabbbblllllee');
+const func = () => {};
+
+const result = countTypes(3, true, 'a', 1, {}, () => {}, 4, [], undefined, false, 0, undefined, func, {}, '');
 
 console.log(result);
