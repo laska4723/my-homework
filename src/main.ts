@@ -1,4 +1,4 @@
-function getLongestString(arr: string[]): string {
+const getLongestString = (arr: string[]): string => {
     return arr.reduce((a, b) => a.length > b.length ? a : b);
 }
 
