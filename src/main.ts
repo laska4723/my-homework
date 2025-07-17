@@ -1,6 +1,10 @@
-const getLongestString = (arr: string[]): string => {
-    return arr.reduce((a, b) => a.length > b.length ? a : b);
-}
+const deduplicate = (str: string): string => {
+    return str.split('').reduce((acc, char) => {
+        const lastChar = acc[acc.length - 1];
+        return char === lastChar ? acc : acc + char;
+    }, '');
+};
 
-const words: string[] = ['ноутбук', 'кресло', 'сумка', 'ключ'];
-console.log(getLongestString(words));
+const result = deduplicate('uuunbbeliaaaaveeabbbblllllee');
+
+console.log(result);
