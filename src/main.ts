@@ -1,11 +1,21 @@
-const mergeToNewObject = (a: Record<string, any>, b: Record<string, any>) => {
-  return { ...a, ...b };
+const merge = (a: Record<string, any>, b: Record<string, any>, order: 1 | 2) => {
+    if (order === 1) {
+        return {
+            ...a,
+            ...b,
+            merged: 'NO!'
+        };
+    } else {
+        return {
+            ...b,
+            ...a,
+            merged: 'YES!'
+        };
+    }
 };
 
-const obj1 = { a: 10, b: 100, c: 1 };
-const obj2 = { a: 20, b: 200, e: 2 };
-const obj3 = mergeToNewObject(obj1, obj2);
+const obj1 = { a: 10, b: 'b', c: 100, child: { name: 'ch', surname: 'hc' } };
+const obj2 = { a: 20, b: ['b'], d: 200, child: { aa: 'aa', bb: 'bb' } };
 
-console.log(obj1); // { a: 10, b: 100, c: 1 }
-console.log(obj2); // { a: 20, b: 200, e: 2 }
-console.log(obj3); // { a: 20, b: 200, c: 1, e: 2 }
+console.log(merge(obj1, obj2, 1));
+console.log(merge(obj1, obj2, 2));
