@@ -1,21 +1,25 @@
-const merge = (a: Record<string, any>, b: Record<string, any>, order: 1 | 2) => {
-    if (order === 1) {
-        return {
-            ...a,
-            ...b,
-            merged: 'NO!'
-        };
-    } else {
-        return {
-            ...b,
-            ...a,
-            merged: 'YES!'
-        };
-    }
-};
+const storage = [
+    'nick',
+    'nack',
+    'nock',
+    [
+        {
+            first: 'forecast',
+            child: null,
+        },
+        {
+            first: 'castfore',
+            child: null,
+        },
+        'zzz',
+    ],
+    'no-1',
+    'no-2',
+] as const;
 
-const obj1 = { a: 10, b: 'b', c: 100, child: { name: 'ch', surname: 'hc' } };
-const obj2 = { a: 20, b: ['b'], d: 200, child: { aa: 'aa', bb: 'bb' } };
+const [ , , , [b0, b1, cos0], ...nos ] = storage;
+const cos = [cos0];
 
-console.log(merge(obj1, obj2, 1));
-console.log(merge(obj1, obj2, 2));
+console.log(nos);
+console.log(cos);
+console.log(b1);
