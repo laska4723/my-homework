@@ -30,5 +30,5 @@ const checkNumber: number = getValue({ age: 1 }, 'age');
 const checkBoolean: boolean = getValue({ a: true }, 'a');
 const checkNull: null = getValue({ x: null }, 'x');
 
-console.log(getValue({ a: 'str' }, 'a').toUpperCase()); // STR
-console.log(getValue({ a: 10 }, 'a') ** 2); // 100
+console.log(getValue({ a: 'str' }, 'a').toUpperCase());
+console.log(getValue({ a: 10 }, 'a') ** 2);
