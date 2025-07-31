@@ -1,24 +1,10 @@
-type Paginated<T> = {
-    total: number;
-    limit: number;
-    offset: number;
-    items: T[];
-};
+type WithId<T> = T & { id: number };
 
 type Person = {
     name: string;
 };
 
-const responseOfPersons: Paginated<Person> = {
-    total: 10,
-    limit: 5,
-    offset: 0,
-    items: [{ name: 'P1' }],
-};
-
-const responseOfSomething: Paginated<{}> = {
-    total: 10,
-    limit: 5,
-    offset: 0,
-    items: [],
+const p: WithId<Person> = {
+    id: 1,
+    name: 'name',
 };
