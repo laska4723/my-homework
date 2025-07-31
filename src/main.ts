@@ -1,10 +1,19 @@
-type WithId<T> = T & { id: number };
+import { faker } from '@faker-js/faker';
 
-type Person = {
+const parse = <T>(json: string): T => JSON.parse(json);
+
+type User = {
+    id: number;
     name: string;
 };
 
-const p: WithId<Person> = {
-    id: 1,
-    name: 'name',
+const user: User = {
+    id: faker.number.int(),
+    name: faker.person.fullName(),
 };
+
+const userString = JSON.stringify(user);
+
+const parsedUser = parse<User>(userString);
+
+console.log(parsedUser.name);
