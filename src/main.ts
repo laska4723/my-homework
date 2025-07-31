@@ -1,64 +1,48 @@
-/**
- * Создайте дженерик-функцию "sortById", которая может сортировать массивы любых типов, у которых есть { id: number }.
- * Можно выбирать направление сортировки - asc (по возрастанию) и desc (по убыванию).
- * По умолчанию используется по возрастанию.
- *
- * Если вы забыли про сортировку, то вспомните тему Массивы. map, find, filter, sort, reduce.
- */
+const generateRandomValue = (min: number, max: number): number =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
 
-import { fakerRU } from '@faker-js/faker';
-
-type User = {
-    id: number;
-    name: string;
+const getOneRandomItem = <T>(items: T[]): T => {
+    const randomIndex = generateRandomValue(0, items.length - 1);
+    return items[randomIndex];
 };
 
-type Animal = {
-    id: number;
-    title: string;
-    type: string;
+const getManyRandomItems = <T>(items: T[], count: number): T[] => {
+    const result: T[] = [];
+    for (let i = 0; i < count; i++) {
+        result.push(getOneRandomItem(items));
+    }
+    return result;
 };
 
-const randomUsers: User[] = Array.from({ length: 5 }).map(() => {
-    return {
-        id: fakerRU.number.int({ min: 1, max: 100 }),
-        name: fakerRU.person.fullName(),
-    };
-});
+const getManyRandomItemsV2 = <T>(items: T[], count: number): T[] => {
+    if (count >= items.length) return shuffleArray(items);
 
-const randomAnimals: Animal[] = Array.from({ length: 7 }).map(() => {
-    return {
-        id: fakerRU.number.int({ min: 1, max: 100 }),
-        title: fakerRU.person.fullName(),
-        type: fakerRU.animal.type(),
-    };
-});
-
-const randomObjects = Array.from({ length: 4 }).map(() => {
-    return {
-        id: fakerRU.number.int({ min: 1, max: 100 }),
-        company: fakerRU.company.name(),
-        food: fakerRU.food.dish(),
-    };
-});
-
-const sortById = <T extends { id: number }>(items: T[], direction: 'asc' | 'desc' = 'asc') => {
-    items.sort((a, b) => (direction === 'asc' ? a.id - b.id : b.id - a.id));
+    const uniqueItems = new Set<T>();
+    while (uniqueItems.size < count) {
+        uniqueItems.add(getOneRandomItem(items));
+    }
+    return Array.from(uniqueItems);
 };
 
-sortById(randomUsers);
-console.log(randomUsers); // Должны быть отсортированы по возрастанию id
+const shuffleArray = <T>(array: T[]): T[] => {
+    const copy = [...array];
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = generateRandomValue(0, i);
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+};
 
-sortById(randomAnimals, 'desc');
-console.log(randomAnimals); // Должны быть отсортированы по убыванию id
+const words = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot'];
+const [first, second] = getManyRandomItems(words, 2);
+console.log(first.toUpperCase());
+console.log(second.toUpperCase());
 
-sortById(randomObjects, 'asc');
-console.log(randomObjects); // Должны быть отсортированы по возрастанию id
+const numbers = [1, 2, 3, 4, 5, 6];
+const [digit] = getManyRandomItems(numbers, 1);
+console.log(digit * 100);
 
-/*
-В примерах ниже должна гореть ошибка!
-Для запуска закомментируйте эти строки
- */
-sortById([{}]);
-sortById([{ a: 10 }]);
-sortById([{ id: 'asj' }]);
+const dataV2 = ['a', 'b', 'c', 'd', 'e'];
+const uniqV2 = getManyRandomItemsV2(dataV2, 5);
+console.log(uniqV2);
+console.log(dataV2.length === uniqV2.length);
