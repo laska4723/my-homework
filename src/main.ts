@@ -1,34 +1,55 @@
-const getValue = <T, K extends keyof T>(obj: T, key: K): T[K] => {
-    return obj[key];
+/* Скобки
+Напишите функцию, которая принимает на вход строку, состоящую из открывающихся и закрывающихся скобок,
+и возвращает true или false - правильный ли порядок открытия и закрытия скобок.
+Правильным порядком считается ситуация, когда скобки закрываются в таком же порядке, в котором и открывались.
+Подсказка: Это идеальная ситуация, чтобы применить структуру данных Стек (Stack), она сделает за вас 80% задачи.
+
+console.log(check('()')); // true
+console.log(check('({})')); // true
+console.log(check('({[({()})]})')); // true
+console.log(check('(){}([])[[[]]]{}()')); // true
+
+console.log(check('(({})')); // false
+console.log(check('({}))')); // false
+console.log(check('([})')); // false
+console.log(check(')(')); // false
+console.log(check(')(}][{')); // false
+ */
+
+const check = (text: string): boolean => {
+  const openingBrackets = ['(', '[', '{'];
+  const closingBrackets = [')', ']', '}'];
+
+  const opened: string[] = [];
+
+  for (const bracket of text) {
+
+    if (openingBrackets.includes(bracket)) {
+      opened.push(bracket);
+      continue;
+    }
+
+    const closedIndex = closingBrackets.indexOf(bracket);
+    if (closedIndex !== -1) {
+      const lastOpened = opened.pop();
+      const expectedOpened = openingBrackets[closedIndex];
+
+      if (lastOpened !== expectedOpened) {
+        return false;
+      }
+    }
+  }
+
+  return opened.length === 0;
 };
 
-const g = { a: 1, b: '', c: true };
-const typeTest1: number = getValue(g, 'a');
-const typeTest2: string = getValue(g, 'b');
-const typeTest3: boolean = getValue(g, 'c');
+console.log(check('()')); // true
+console.log(check('({})')); // true
+console.log(check('({[({()})]})')); // true
+console.log(check('(){}([])[[[]]]{}()')); // true
 
-const a = { id: 1, name: 's' };
-
-console.log(getValue(a, 'id')); // 1
-console.log(getValue(a, 'name')); // s
-// console.log(getValue(a, 'key')); // Ошибка! Ключа key нет в { id: number, name: string };
-
-// console.log(getValue({}, 'age')); // Ошибка! Ключа age нет в {}
-
-const b = { email: 'ex' };
-console.log(getValue(b, 'email')); // ex
-// console.log(getValue(b, '')); // Ошибка! Ключа '' нет в { email: string }
-
-console.log(getValue({ ...a, x: 10 }, 'x')); // 10
-console.log(getValue({ ...a, x: 10 }, 'name')); // s
-console.log(getValue({ ...a, x: 10 }, 'id')); // 1
-// console.log(getValue({ ...a, x: 10 }, 's')); // Ошибка! Ключа s нет в { id: number, name: string, x: number }
-
-console.log(getValue({ ...b, ...a }, 'email')); // ex
-
-const checkNumber: number = getValue({ age: 1 }, 'age');
-const checkBoolean: boolean = getValue({ a: true }, 'a');
-const checkNull: null = getValue({ x: null }, 'x');
-
-console.log(getValue({ a: 'str' }, 'a').toUpperCase());
-console.log(getValue({ a: 10 }, 'a') ** 2);
+console.log(check('(({})')); // false
+console.log(check('({}))')); // false
+console.log(check('([})')); // false
+console.log(check(')(')); // false
+console.log(check(')(}][{')); // false
