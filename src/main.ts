@@ -1,55 +1,24 @@
-/* Скобки
-Напишите функцию, которая принимает на вход строку, состоящую из открывающихся и закрывающихся скобок,
-и возвращает true или false - правильный ли порядок открытия и закрытия скобок.
-Правильным порядком считается ситуация, когда скобки закрываются в таком же порядке, в котором и открывались.
-Подсказка: Это идеальная ситуация, чтобы применить структуру данных Стек (Stack), она сделает за вас 80% задачи.
+/* Палиндром
+Напишите функцию, которая получает на вход строку и возвращает true / false - является ли слово палиндромом или нет.
 
-console.log(check('()')); // true
-console.log(check('({})')); // true
-console.log(check('({[({()})]})')); // true
-console.log(check('(){}([])[[[]]]{}()')); // true
+Палиндром - слово, которое в обратную сторону читается так же, как и в обычном порядке. Например "кабак".
 
-console.log(check('(({})')); // false
-console.log(check('({}))')); // false
-console.log(check('([})')); // false
-console.log(check(')(')); // false
-console.log(check(')(}][{')); // false
  */
 
-const check = (text: string): boolean => {
-  const openingBrackets = ['(', '[', '{'];
-  const closingBrackets = [')', ']', '}'];
+const palindrome1 = (str: string): boolean => {
+  const reverseStr = str.toLowerCase().split('').reverse().join('');
+  return reverseStr === str;
+}
 
-  const opened: string[] = [];
-
-  for (const bracket of text) {
-
-    if (openingBrackets.includes(bracket)) {
-      opened.push(bracket);
-      continue;
-    }
-
-    const closedIndex = closingBrackets.indexOf(bracket);
-    if (closedIndex !== -1) {
-      const lastOpened = opened.pop();
-      const expectedOpened = openingBrackets[closedIndex];
-
-      if (lastOpened !== expectedOpened) {
-        return false;
-      }
+const palindrome2 = (str: string): boolean => {
+  const lowerStr = str.toLowerCase();
+  for (let i = 0; i < str.length / 2; i++) {
+    if (lowerStr[i] !== lowerStr[lowerStr.length - 1 - i]) {
+      return false;
     }
   }
-
-  return opened.length === 0;
+  return true;
 };
 
-console.log(check('()')); // true
-console.log(check('({})')); // true
-console.log(check('({[({()})]})')); // true
-console.log(check('(){}([])[[[]]]{}()')); // true
-
-console.log(check('(({})')); // false
-console.log(check('({}))')); // false
-console.log(check('([})')); // false
-console.log(check(')(')); // false
-console.log(check(')(}][{')); // false
+console.log(palindrome1('кабак'));
+console.log(palindrome2('кабак'));
