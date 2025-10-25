@@ -1,25 +1,25 @@
-/* Палиндром
-Напишите функцию, которая получает на вход строку и возвращает true / false - является ли слово палиндромом или нет.
+/* Палиндром Число
+Напишите функцию, которая получает на вход 2 числа и возвращает true / false - является читаются ли эти числа наоборот.
+Конвертировать число в строку запрещено! Работайте с входными данными именно как с числом! Например:
 
-Палиндром - слово, которое в обратную сторону читается так же, как и в обычном порядке. Например "кабак".
+f(123, 321) // true, 123 это 321 наоборот
+f(22, 22) // true, 22 это 22 наоборот
+f(56, 56) // false, 56 наоборот это НЕ 56
+*/
 
- */
+function palindromeNum (a: number, b: number): boolean {
+  let originalNum = a;
+  let reversedNum = 0;
 
-const palindrome1 = (str: string): boolean => {
-  const lowerStr = str.toLowerCase();
-  const reverseStr = lowerStr.split('').reverse().join('');
-  return reverseStr === lowerStr;
+  while (originalNum > 0) {
+    let num = originalNum % 10;
+    reversedNum = reversedNum * 10 + num;
+    originalNum = Math.floor(originalNum / 10);
+  }
+
+  return reversedNum === b;
 }
 
-const palindrome2 = (str: string): boolean => {
-  const lowerStr = str.toLowerCase();
-  for (let i = 0; i < str.length / 2; i++) {
-    if (lowerStr[i] !== lowerStr[lowerStr.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-console.log(palindrome1('Кабак'));
-console.log(palindrome2('Кабак'));
+console.log(palindromeNum(123, 321)); // true
+console.log(palindromeNum(22, 22));   // true
+console.log(palindromeNum(56, 56));   // false
