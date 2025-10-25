@@ -6,8 +6,9 @@
  */
 
 const palindrome1 = (str: string): boolean => {
-  const reverseStr = str.toLowerCase().split('').reverse().join('');
-  return reverseStr === str;
+  const lowerStr = str.toLowerCase();
+  const reverseStr = lowerStr.split('').reverse().join('');
+  return reverseStr === lowerStr;
 }
 
 const palindrome2 = (str: string): boolean => {
@@ -20,5 +21,5 @@ const palindrome2 = (str: string): boolean => {
   return true;
 };
 
-console.log(palindrome1('кабак'));
-console.log(palindrome2('кабак'));
+console.log(palindrome1('Кабак'));
+console.log(palindrome2('Кабак'));
