@@ -1,12 +1,20 @@
-/* Сумма элементов массива
-Напишите функцию, которая получает на вход массив чисел и возвращает их сумму.
+/* Дедубликация
+Напишите функцию, которая удаляет повторения символов из строки, сохраняя порядок.
 Для решения используйте reduce.
+
+const result = deduplicate('uuunbbeliaaaaveeabbbblllllee');
+console.log(result); // unbeliaveable
 */
 
-const sumArray = (arr: number[]): number => {
-  return arr.reduce((sum, current) => sum += current);
+const deduplicate = (str: string): string => {
+  let result: string = '';
+  for (const char of str) {
+    if (char !== result[result.length - 1]) {
+      result += char;
+    }
+  }
+  return result;
 }
 
-// Пример:
-const arr = [2, 5, 7, 4, 8];
-console.log(sumArray(arr)); // 26
+const result = deduplicate('uuunbbeliaaaaveeabbbblllllee');
+console.log(result); // unbeliaveable
