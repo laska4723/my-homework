@@ -7,14 +7,13 @@ console.log(result); // unbeliaveable
 */
 
 const deduplicate = (str: string): string => {
-  let result: string = '';
-  for (const char of str) {
+  return str.split('').reduce((result, char) => {
     if (char !== result[result.length - 1]) {
       result += char;
     }
-  }
-  return result;
-}
+    return result;
+  }, '');
+};
 
 const result = deduplicate('uuunbbeliaaaaveeabbbblllllee');
 console.log(result); // unbeliaveable
